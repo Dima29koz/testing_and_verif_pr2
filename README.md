@@ -6,26 +6,26 @@
 •	Расстояние между балясинами (см)
 
 class RailingCalc(builtins.object)
- |  RailingCalc(baluster_width: float, distance_balusters: float)
+ |  RailingCalc(baluster_width: float = 5, distance_balusters: float = 18)
  |  
  |  Расчитывает конфигурацию перил в зависимости от параметров
  |  
  |  Methods defined here:
  |  
- |  __init__(self, baluster_width: float, distance_balusters: float)
+ |  __init__(self, baluster_width: float = 5, distance_balusters: float = 18)
  |      Ввод начальных данных для расчета расположения балясин
  |      
- |      :param baluster_width: ширина балясины
- |      :param distance_balusters: расстояние между балясин
+ |      :param baluster_width: ширина балясины (см)
+ |      :param distance_balusters: расстояние между балясин(см)
  |  
- |  get_baluster_positions(self, length: float) -> list[float]
- |      Вычисляет расстановку балясин в зависимости от длины пролета перил.
- |      Возможны две расстановки:
+ |  get_baluster_positions(self, length: float) -> list
+ |      Вычисляет расстановку балясин в зависимости от длины пролета перил. Возможны две расстановки:
  |      1) центр одной из балясин совпадает с центром пролета
  |      2) центр пролета перил совпадает с серединой промежутка между центральными балясинами
  |      Если ни одна из расстановок не проходит, возвращает пустой список,
- |      иначе список отступов (list[float]) 
- |      :param length: длина пролета перил
- |      :return: список отступов от начала пролета до края балясины
+ |      иначе список отступов (list[float])
+ |      Так же вызывает исключение ValueError при некорректном вводе
+ |      :param length: длина пролета перил (см), allowed from 0 to 10000
+ |      :return: list[float]: список отступов от начала пролета до края балясины
  |  
  |  ----------------------------------------------------------------------
